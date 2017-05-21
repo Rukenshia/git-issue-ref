@@ -4,6 +4,9 @@ _Please read the [documentation](docs/git-issue-ref.md) for more information._
 
 This tool provides automatic issue references in commit messages based on the current branch or a prefix in the commit message. You can also supply manual formats so you don't have to supply anything.
 
+## Go get
+`go get github.com/Rukenshia/git-issue-ref`
+
 ## Installation from Source
 Currently you need to build it yourself using `go 1.7.5`(or newer). Just go into the package and use `go get && go build`.
 
