@@ -1,13 +1,3 @@
 language: go
 go:
 - 1.8
-deploy:
-  provider: releases
-  api_key:
-    secure: An92HG1JPpskgwpU+AVnd1qqoD1aCZ2y8A9JkMSCNZGUD9JE3B0bOYC6w6W7L77vJJGyI4MFnsASpT5AS9NRYnSrVzAZdWN6rgXkErPmRJdsbWku7Hj0pBS9GR+zOPWqu1cg4vz3dwV2FGRGxejde0FxONwDyobU/BYQyymldAIfm7lwmo+p0hCs9bCYTqx9eYA0OeIDwOBt8dru4mnzluFpa7MaFbqNwLLW7h226bZ5GswgFZ98DM9WKDmBFyjokVdEm4yEMS+nzHvsZ7A15ZIegI51K9FNOkQZ3s0d9O16Y2Xli6p6l+qKpRruITSH5SN+1CPbKx+O81mzwTRLl/BP7tkPh3ncFqy53FH4TLpZekeBFb1yiQkVjDBSx6NK3vcZHcb/Bz0W6CCNTfpTXx7V44zfNhn5IySzvdRlmOkzRBTjQrQzuW0Z9HOvQBmyMXnsXcxI0XXaSoI7jpP62WUXljuSbykUnuupIq6wIH/MIP6C32G7QuHJdGmwkZOPF/O6uHTZQyX+jf7OXKtszcUEVkoSz7AWdjm3ZXo0MtBloDr+rxmDr7I7IFc+vpXaA8IS3aYDHTdjUjE7KIR2SIPr5G8PfAxoezR0O2DzbjDIAmw76pUbMs0EYuA6WkwGycNa1HSOIl+E/dyuYJS6Xj4ewvxh9UPH2Agpfx+5gbU=
-  file: git-issue-ref
-  on:
-    repo: Rukenshia/git-issue-ref
-
-before_deploy:
-  - go build
