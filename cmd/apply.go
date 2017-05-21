@@ -42,20 +42,23 @@ By default, this command will fail if no reference could be found unless link wa
 
 		if checkFormat(format) && err != nil {
 			if err.Error() == "no issue ref found" {
-				color.Yellow("\nWARN: no issue ref found, adding nothing to commit message\n")
+				color.Yellow("\ngit-issue-ref WARN: no issue ref found, adding nothing to commit message\n\n")
 			} else {
-				color.Red("\nFAILED: %s\n", err.Error())
+				color.Red("\ngit-issue-ref FAILED: %s\n\n", err.Error())
 				os.Exit(1)
 			}
 		}
 
-		output := fmt.Sprintf("%s%s",
-			strings.Replace(format, "{ref}", ref, -1),
-			strings.TrimSpace(strings.Replace(str, ref, "", -1)))
+		var output = str
+		if len(ref) > 0 {
+			output = fmt.Sprintf("%s%s",
+				strings.Replace(format, "{ref}", ref, -1),
+				strings.TrimSpace(strings.Replace(str, ref, "", -1)))
+		}
 
 		if len(file) > 0 {
 			if err := ioutil.WriteFile(file, []byte(output), 0644); err != nil {
-				color.Red("\nFAILED: %s\n", err.Error())
+				color.Red("\ngit-issue-ref FAILED: %s\n\n", err.Error())
 				os.Exit(1)
 			}
 		} else {
@@ -90,6 +93,13 @@ func inferFromBranch() (string, error) {
 
 	branch, err := cmd.CombinedOutput()
 	if err != nil {
+		if err.Error() == "exit status 128" {
+			msg := string(branch)
+			if strings.Contains(msg, "ambiguous argument") {
+				return "", errors.New("no issue ref found")
+			}
+			return "", errors.New(string(branch))
+		}
 		return "", err
 	}
 
