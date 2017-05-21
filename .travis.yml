@@ -8,3 +8,6 @@ deploy:
   file: git-issue-ref
   on:
     repo: Rukenshia/git-issue-ref
+
+before_deploy:
+  - go build
