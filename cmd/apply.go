@@ -75,8 +75,8 @@ func init() {
 	applyCmd.Flags().BoolVar(&nonIntrusive, "non-intrusive", false, "if no reference could be found, omit it and dont fail")
 }
 
-var reRef = regexp.MustCompile(`^([\w-]*-?[0-9]{1,})`)
-var reBranchRef = regexp.MustCompile(`^(.*?\/)?([\w-]*-?[0-9]{1,})`)
+var reRef = regexp.MustCompile(`^([\w-]*?-?[0-9]{1,})`)
+var reBranchRef = regexp.MustCompile(`^(.*?\/)?([\w-]*?-?[0-9]{1,})`)
 
 func parseRef(str string) (string, error) {
 	m := reRef.FindStringSubmatch(str)
